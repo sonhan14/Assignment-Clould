@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="mystyle.css" />
-    <title>HanSon-LEGO</title>
+    <title>Edit Product</title>
 </head>
-
 <body>
     {{!-- Thanh công cụ --}}
     <ul class="nav nav-tabs" style="background-color: blue;">
@@ -30,38 +27,42 @@
             <a style="color: white;" class="nav-link" href="/product">Products</a>
         </li>
     </ul>
-    <h1 style="text-align: center; color:red;">HanSon-LEGO</h1>
-    <center>
-        <div class="form-group" style="margin-top: 5%;">
-            <form action="">
-                <input type="text" placeholder="Search">
-            </form>
-        </div>
-    </center>
-    <div class="border border-primary" style="margin: 50px 150px;">
-        <h3 style="color: blue;">LEGOs</h3>
+    <h1 style="text-align: center; color:red;">Update Product</h1>
+    <div>
+        <form class="border" style="text-align: center;" action="/edit" method="post">
+            <fieldset>
+                Name: <br>
+                <input type="text" name="txtName" id="txtName" value="{{product.name}}">
+                <br>
+                Price: <br>
+                <input type="text" name="txtPrice" id="txtPrice" value="{{product.price}}">
+                <span style="color: red;">{{error}}</span>
+                <br>
+                Picture URL: <br>
+                <input type="text" name="txtPicURL" id="txtPicURL">
+                <br>
+                <br>
+                <input type="submit" value="Update">
+            </fieldset>
+        </form>
         <br>
+    </div style="margin: 50px 150px;">
+    <h2 style="color: blue;">Product's Information</h2>
+    <div>
         <table class="table">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Picture</th>
-                <th></th>
-                <th></th>
             </tr>
-            {{#each products}}
             <tr>
-                <td>{{_id}}</td>
-                <td>{{name}}</td>
-                <td>{{price}}</td>
-                <td><img src="{{pic}}" width="200" height="200"></td>
-                <td><a href="/edit/{{_id}}">Edit</a></td>
-                <td><a onclick="return confirm('Are you sure to delete this item???')" href="/delete?id={{_id}}">Delete</a></td>
+                <td>{{product._id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td><img src="{{product.pic}}" width="200" height="200"></td>
             </tr>
-            {{/each}}
-        </table>        
+        </table>
     </div>
 </body>
-
 </html>
