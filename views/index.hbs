@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="mystyle.css" />
-    <title>Home Page</title>
+    <title>HanSon-Store</title>
 </head>
 
 <body>
+    {{!-- Thanh công cụ --}}
     <ul class="nav nav-tabs" style="background-color: blue;">
         <li class="nav-item" style="width: 200px;">
-            <h3 style="color: white; margin-left: 20%;;">ATN Toys</h3>
+            <h3 style="color: white; margin-left: 20%;;">HS Toys</h3>
         </li>
         <li class="nav-item">
-            <a style="color: white;" class="nav-link" href="#">Home</a>
+            <a style="color: white;" class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
             <a style="color: white;" class="nav-link" href="#">About</a>
@@ -26,14 +27,42 @@
             <a style="color: white;" class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-            <a style="color: white;" class="nav-link" href="#">Products</a>
+            <a style="color: white;" class="nav-link" href="/product">Products</a>
         </li>
     </ul>
-    <h1 style="text-align: center; color:red;">ATN Toys</h1>
-    <div style="margin: 50px 150px;">
-        <h3 style="color: blue;">Toys</h3>
+    <h1 style="text-align: center; color:red;">HanSon-Store</h1>
+    <center>
+        <div class="form-group" style="margin-top: 5%;">
+            <form action="">
+                <input type="text" placeholder="Search">
+            </form>
+        </div>
+    </center>
+    <div class="border border-primary" style="margin: 50px 150px;">
+        <h3 style="color: blue;">LEGOs</h3>
+        <br>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Picture</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {{#each products}}
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{name}}</td>
+                <td>{{price}}</td>
+                <td><img src="{{pic}}" width="200" height="100"></td>
+                <td><a href="/edit/{{_id}}">Edit</a></td>
+                <td><a onclick="return confirm('Are you sure to delete this product"
+                        href="/delete?id={{_id}}">Delete</a></td>
+            </tr>
+            {{/each}}
+        </table>        
     </div>
-    <img src="mèn sexy.jpg" alt="" width="200" height="400">
 </body>
 
 </html>
