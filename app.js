@@ -49,13 +49,23 @@ app.get('/delete',async(req,res)=>{
     res.redirect('/')
 })
 
-app.get('/edit/:id',async(req,res)=>{
-    const id = req.params.id
-    //lay information old of product before edit
+app.get('/edit',async(req,res)=>{
+    const id = req.query.id
     const dbo = await getDatabase()
     const result = await dbo.collection("Products").findOne({_id:ObjectId(id)})
-    //hien thi ra de sua
-    res.render("edit",({product:result}))
+    res.render('edit', {product:result})
+})
+
+app.post('/edit',async (req,res)=>{
+    const nameInput = req.body.txtName
+    const priceInput = req.body.txtPrice
+    const picURL = req.body.txtPicURL
+    const id = req.body.txtId
+    const myquery = {_id:ObjectId(id)};
+    const newvalue = {$set: {name:nameInput,price:priceInput,pic:picURL}};
+    const dbo = await getDatabase()
+    dbo.collection("Products").updateOne(myquery,newvalue)
+    res.redirect('/')
 })
 
 const PORT = process.env.PORT || 5000

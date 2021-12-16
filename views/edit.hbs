@@ -31,6 +31,7 @@
     <div>
         <form class="border" style="text-align: center;" action="/edit" method="post">
             <fieldset>
+                <input type="hidden" name="txtId" value="{{product._id}}">
                 Name: <br>
                 <input type="text" name="txtName" id="txtName" value="{{product.name}}">
                 <br>
@@ -39,7 +40,7 @@
                 <span style="color: red;">{{error}}</span>
                 <br>
                 Picture URL: <br>
-                <input type="text" name="txtPicURL" id="txtPicURL">
+                <input type="text" name="txtPicURL" id="txtPicURL" value="{{product.pic}}">
                 <br>
                 <br>
                 <input type="submit" value="Update">

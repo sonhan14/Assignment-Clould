@@ -34,7 +34,10 @@
     <center>
         <div class="form-group" style="margin-top: 5%;">
             <form action="">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Name of product" name="searchName" id="searchName">
+                <br>
+                <br>
+                <input type="submit" value="Search">
             </form>
         </div>
     </center>
@@ -56,7 +59,7 @@
                 <td>{{name}}</td>
                 <td>{{price}}</td>
                 <td><img src="{{pic}}" width="200" height="200"></td>
-                <td><a href="/edit/{{_id}}">Edit</a></td>
+                <td><a href="/edit?id={{_id}}">Edit</a></td>
                 <td><a onclick="return confirm('Are you sure to delete this item???')" href="/delete?id={{_id}}">Delete</a></td>
             </tr>
             {{/each}}
